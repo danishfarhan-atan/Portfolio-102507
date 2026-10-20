@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danish Farhan | Professional Portfolio</title>
+    <style>
+        /* CSS Styling for Color and Typography */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background-color: #1e3d59;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            color: #ffffff;
+        }
+        header p {
+            color: #17b978;
+            font-weight: bold;
+        }
+        /* Theme Toggle Button Style */
+        #theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #17b978;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        #theme-toggle:hover {
+            background-color: #128c5d;
+        }
+        section {
+            background-color: #ffffff;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid #17b978;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h2 {
+            color: #1e3d59;
+            margin-top: 0;
+        }
+        a {
+            color: #17b978;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666666;
+            font-size: 0.9em;
+        }
+
+        /* Dark Mode Classes toggled by JavaScript */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode section {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+        }
+        body.dark-mode h2 {
+            color: #17b978;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: Header / Introduction -->
+    <header>
+        <button id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+        <h1>Danish Farhan Bin Jelani (102507)</h1>
+        <p>Third Year Student Network Computing Undergraduate at UNIMAS</p>
+        <p id="dynamic-greeting" style="font-size: 0.95em; margin-top: 10px; color: #ffffff;"></p>
+    </header>
+
+    <!-- SECTION 2: Professional Profile -->
+    <section>
+        <h2>Profile</h2>
+        <p>I am a Network Computing undergraduate at Universiti Malaysia Sarawak (UNIMAS) with a strong foundation in IT, networking, hardware, and robotics. Cultivated through my background at the Royal Military College, I bring core values of discipline, leadership, and effective teamwork to every project. I am actively seeking internship opportunities to apply my technical skills and contribute to real-world IT and cybersecurity solutions.</p>
+    </section>
+
+    <!-- SECTION 3: Education & Technical Skills -->
+    <section>
+        <h2>Education & Technical Skills</h2>
+        <p><strong>Education:</strong> Bachelor of Computer Science (Network Computing) - Universiti Malaysia Sarawak (UNIMAS)</p>
+        <p>Here are the core technical domains and programming tools I am developing:</p>
+        <ul>
+            <li><strong>Core IT & Systems:</strong> Networking, Hardware Diagnostics, and Robotics</li>
+            <li><strong>Web Development:</strong> HTML, CSS, and JavaScript Fundamentals</li>
+            <li><strong>Professional Attributes:</strong> Structured Problem Solving, Team Coordination, and Tactical Discipline</li>
+        </ul>
+    </section>
+
+    <!-- SECTION 4: Personal Interests -->
+    <section>
+        <h2>Interests & Personal Development</h2>
+        <p>Outside of my academic and technical pursuits, I value continuous growth and balance through:</p>
+        <ul>
+            <li>Riding and motorcycle maintenance</li>
+            <li>Exploring nature trails and outdoor hiking</li>
+            <li>Listening to classic music for focus and relaxation</li>
+        </ul>
+    </section>
+
+    <!-- SECTION 5: Contact Information -->
+    <section>
+        <h2>Contact Information</h2>
+        <p>I am always open to professional networking, collaboration, or internship discussions. Feel free to connect with me:</p>
+        <p>Email: <a href="mailto:danishfarhan04@gmail.com">danishfarhan04@gmail.com</a></p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <hr>
+        <p>&copy; 2026 Danish Farhan. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Dynamic Time-Based Greeting Script
+        const greetingElement = document.getElementById("dynamic-greeting");
+        const currentHour = new Date().getHours();
+        let greetingText = "Welcome to my professional portfolio.";
+
+        if (currentHour < 12) {
+            greetingText = "Good Morning. Welcome to my professional portfolio.";
+        } else if (currentHour < 18) {
+            greetingText = "Good Afternoon. Welcome to my professional portfolio.";
+        } else {
+            greetingText = "Good Evening. Welcome to my professional portfolio.";
+        }
+        greetingElement.textContent = greetingText;
+
+        // 2. Dark / Light Mode Toggle Script
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.getElementById("theme-toggle");
+            
+            body.classList.toggle("dark-mode");
+
+            // Update button text and save preference in localStorage
+            if (body.classList.contains("dark-mode")) {
+                button.textContent = "Light Mode";
+                localStorage.setItem("portfolio-theme", "dark");
+            } else {
+                button.textContent = "Dark Mode";
+                localStorage.setItem("portfolio-theme", "light");
+            }
+        }
+
+        // Check saved theme preference on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem("portfolio-theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("theme-toggle").textContent = "Light Mode";
+            }
+        };
+    </script>
+
+</body>
+</html>
